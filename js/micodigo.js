@@ -187,7 +187,7 @@ if(p==res){
 	 */
 	function Particle ()
 	{
-		this.scale = 2.0;
+		this.scale = 1.3;
 		this.x = 0;
 		this.y = 0;
 		this.radius = 20;
