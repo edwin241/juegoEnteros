@@ -95,7 +95,7 @@ var res,o1,o2,o3,o4,ale;
 function ponerOpciones(){
 ale = Math.round(Math.random()*3);	
 if(nivel==1||nivel==2){
-res=parseInt(sig1+n1)+parseInt(sig2+n2);}else{res=parseInt(sig1+n1)+parseInt(sig2+n2)+parseInt(sig3+n3);console.log("resp="+res);}
+res=parseInt(sig1+n1)+parseInt(sig2+n2);}else{res=parseInt(sig1+n1)+parseInt(sig2+n2)+parseInt(sig3+n3);}
 //console.log(""+res);
 if(nivel==3){
 if(sig2=="+"){		
@@ -277,7 +277,7 @@ if(p==res){
 		var minScaleSpeed = 1.0;
 		var maxScaleSpeed = 4.0;
 		
-		console.log("explo");
+		
 		for (var angle=0; angle<360; angle += Math.round(360/count))
 		{
 			var particle = new Particle();
@@ -384,7 +384,9 @@ context2D.shadowColor = "transparent"
 	$("#parrafo2").text("Has tenido 3 errores, sigue intentando");
 	 $("#dialog").dialog();
   $("#lnkDialog").click();
+  console.log("textfade final");
 init();
+console.log("dialogo");
 	}
 	else{
 
@@ -401,9 +403,9 @@ vidas=3;hasta=120*sc;
 texto="Superados";	
 $("#parrafo1").text("Todos los retos");
 $("#parrafo2").text("Dominas perfectamente los n\u00FAmeros enteros");
-console.log("sale del of");	
+
 		}else{
-	console.log("aciertos = 10");
+	
 vidas=3;hasta=120*sc;
 posX=0;posX2=0;
 	$(".vidas").text(""+3);
@@ -419,7 +421,7 @@ $("#parrafo2").text("\u00BFPodr\u00E1s con l\u00E9?");
 	}
 $("#dialog").dialog();
   $("#lnkDialog").click();
-  console.log("antes de init");
+  
  init(); 	
 	}
 Generar();	
@@ -519,7 +521,7 @@ ctx.globalAlpha=0.6;
 
 	// Event listener for the start button.
 	function animationWin() {
-	console.log("he ganado");	
+	
 hasta=hasta+120*sc;
 aciertos=aciertos+1;
 		// Start the animation.
@@ -530,7 +532,7 @@ aciertos=aciertos+1;
 
 	// Event listener for the stop button.
 	 function animationLost() {
-		console.log("he perdido");	
+		
 	posX2=hasta;	
 hasta=hasta-120*sc;
 posX=posX-120*sc;
@@ -551,7 +553,7 @@ posX=posX-120*sc;
             ctx.font = "40pt Helvetica";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-			console.log("init final");
+			
                      Textfadeup();        }
  
           function Textfadeup() {
@@ -565,7 +567,7 @@ posX=posX-120*sc;
             if (rgbstep == 255) {
                 Textfadedown();
             }
-			console.log("textfade final");
+			
         }
         function Textfadedown() {
 rgbstep=rgbstep-1;
