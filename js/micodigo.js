@@ -3,6 +3,8 @@ var texto;
 var nivel=1;
 var vidas=3;
 var aciertos=0; 
+var sc=0.5; //escala canvas
+var scl=1; // escalar letra
 	// Get the buttons.
 	
 	// A variable to store the requestID.
@@ -43,7 +45,7 @@ canvas=elemento.getContext("2d");
 	
 	canvas.fillStyle = "#FFF";
 	canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-canvas.font="bold 300px Ravie";
+canvas.font="bold 100px Ravie";
 canvas.textAlign = "center";
 canvas.fillStyle = "red";
 canvas.shadowOffsetX = 10;
@@ -51,12 +53,12 @@ canvas.shadowOffsetY = 10;
 canvas.shadowBlur = 10;
 canvas.shadowColor = "rgba(0, 0, 0, 1)"
 if(nivel==1||nivel==2){
-if(sig1=="+"){canvas.fillText(""+n1+sig2+n2,625,350);}else{	
-canvas.fillText(""+sig1+n1+sig2+n2,625,350);}
+if(sig1=="+"){canvas.fillText(""+n1+sig2+n2,300,150);}else{	
+canvas.fillText(""+sig1+n1+sig2+n2,300,150);}
 }else{
-canvas.font="bold 200px Ravie";	
-	if(sig1=="+"){canvas.fillText(""+n1+sig2+n2+sig3+n3,625,300);}else{	
-canvas.fillText(""+sig1+n1+sig2+n2+sig3+n3,625,300);}
+canvas.font="bold 80px Ravie";	
+	if(sig1=="+"){canvas.fillText(""+n1+sig2+n2+sig3+n3,300,150);}else{	
+canvas.fillText(""+sig1+n1+sig2+n2+sig3+n3,300,150);}
 	}
 ponerOpciones();
 	
@@ -341,9 +343,9 @@ animar();
 		var frameDelay = 1000.0/frameRate;
 		
 function animar(){
-	var x=260;
-			var y=200;
-			var d=160;
+	var x=260*sc;
+			var y=200*sc;
+			var d=160*sc;
 	
 
 context2D.shadowColor = "transparent"
@@ -370,7 +372,7 @@ context2D.shadowColor = "transparent"
 			
 	comprobar();
 	if(vidas==0){
-	vidas=3;hasta=-120;
+	vidas=3;hasta=-120*sc;
 	posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	animationWin();
@@ -389,7 +391,7 @@ init();
 if(aciertos==10){
 nivel=nivel+1;
 	if(nivel==4){
-vidas=3;hasta=120;
+vidas=3;hasta=120*sc;
 	posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	animationLost();
@@ -402,7 +404,7 @@ $("#parrafo2").text("Dominas perfectamente los n\u00FAmeros enteros");
 console.log("sale del of");	
 		}else{
 	console.log("aciertos = 10");
-vidas=3;hasta=120;
+vidas=3;hasta=120*sc;
 posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	
@@ -434,11 +436,11 @@ var canvas = document.getElementById('stage');
  ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120), 50);
-				ctx.lineTo(10+(i*120), 10);
+				ctx.moveTo(10+(i*120*sc), 30);
+				ctx.lineTo(10+(i*120*sc), 10);
 				ctx.stroke(); 
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120)-12, 55);
+				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
 }
 
 	// Set the fill style for the drawing context.
@@ -465,21 +467,21 @@ var canvas = document.getElementById('stage');
 		// Otherwise stop the animation.
 		if (posX <= hasta) {
 		//	console.log("posx="+posX);
-			ctx.clearRect(0, 0,640,250);
+			ctx.clearRect(0, 0,1400*sc,250*sc);
 	for(var i=0;i<10;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120), 50);
-				ctx.lineTo(10+(i*120), 10);
+				ctx.moveTo(10+(i*120*sc), 50);
+				ctx.lineTo(10+(i*120*sc), 10);
 				ctx.stroke(); 
 				ctx.fillStyle="black";
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120)-12, 55);
+				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0,0,posX+10,250);
+			ctx.fillRect(0,0,posX+10,250*sc);
 			
 			posX += pixelsPerFrame;
 		} else {
@@ -493,21 +495,21 @@ function animate2() {
 		// If the box has not reached the end draw on the canvas.
 		// Otherwise stop the animation.
 		if (posX2 >= hasta) {
-			ctx.clearRect(0, 0,640, 250);
+			ctx.clearRect(0, 0,1400*sc, 250*sc);
 	for(var i=0;i<11;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120), 30);
-				ctx.lineTo(10+(i*120), 10);
+				ctx.moveTo(10+(i*120*sc), 30);
+				ctx.lineTo(10+(i*120*sc), 10);
 				ctx.stroke(); 
 				ctx.fillStyle="black";
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120)-12, 55);
+				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0, 0, posX2+10, 250);
+			ctx.fillRect(0, 0, posX2+10, 250*sc);
 			posX2 = posX2-1;
 			
 		} else {
@@ -518,7 +520,7 @@ ctx.globalAlpha=0.6;
 	// Event listener for the start button.
 	function animationWin() {
 	console.log("he ganado");	
-hasta=hasta+120;
+hasta=hasta+120*sc;
 aciertos=aciertos+1;
 		// Start the animation.
 		requestID = requestAnimationFrame(animates);
@@ -530,8 +532,8 @@ aciertos=aciertos+1;
 	 function animationLost() {
 		console.log("he perdido");	
 	posX2=hasta;	
-hasta=hasta-120;
-posX=posX-120;
+hasta=hasta-120*sc;
+posX=posX-120*sc;
 		// Start the animation.
 		requestID2 = requestAnimationFrame(animate2);
 	}
