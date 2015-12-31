@@ -10,18 +10,54 @@
 <script src="jquery-2.1.4.min.js"></script>
 <script src="js/mootools-yui-compressed.js">
 </script>
-
-
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+ html,body, div[data-role ="page"] {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+ 
+         .ui-content{
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            border-style: solid;
+            border-color: chartreuse;
+            border-width: 5px;
+        }
+ 
+        #canvas {
+            height: 30%;
+            width: 50%;
+            padding: 0px;
+            border-style: solid;
+            border-color: crimson;
+            border-width: 10px;
+		}
+		#stage {
+            height: 10%;
+            width: 50%;
+            padding: 0px;
+            border-style: solid;
+            border-color: crimson;
+          border-width: 10px;
+		}
+		
+</style>
+
 </head>
 
 <body>
 <div data-role="page" data-theme="a">
-<div data-role="header">
-<h1><img src="images/logo.png" alt="Low resolution logo"class="align-right"/></h1>
+<div data-role="header" >
+<center>
+<img src="images/logo.png" alt="Low resolution logo"class="align-right"/>
+</center>
 </div>
-<div style="border:#3F9 solid; overflow:hidden;">
-
+<div style="border:#3F9 solid; overflow:hidden; margin-bottom:0px; margin-bottom:0px; padding-bottom:0px;">
 <img src="images/vidas1.png" alt="vidas" data-inline="true"/>
 <label class="vidas" data-inline="true" style="float:left; color:#0F9; font-family:Ravie; font-size:30px">  3  </label>
 
@@ -29,14 +65,12 @@
 <label class="nivel" data-inline="true" style="float:right; color:#4764e5;
 font-family:Ravie; font-size:30px">  1  </label>
  </div>
-
-  <br>
-
-<div data-role="content" style="overflow:hidden"><br>
-<canvas  class="canvas" id="canvas" width="600" height="250" > </canvas>
+<div data-role="content" style="overflow:hidden; margin-top:0px; border-top:0px; border:#3F9 solid; padding-top:0px;" >
+<center>
+<canvas  class="canvas" id="canvas" width="600" height="250" style="margin-top:0px; border-top:0px;padding-top:0px;" > </canvas>
 <br>
 <canvas style="padding:10; border-radius: 49px 49px 49px 49px; border:10px solid black" id="stage" width="600" height="125"></canvas>
- 
+ </center>
 
 <div class="botones">
 <a data-role="button" data-theme="a" id="op1" class="op1" style=" background:#4764e5">Empezar</a>
