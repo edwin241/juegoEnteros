@@ -383,7 +383,11 @@ context2D.shadowColor = "transparent"
 	$("#parrafo1").text("");
 	$("#parrafo2").text("Has tenido 3 errores, sigue intentando");
 	 $("#dialog").dialog();
+	 $( "#dialog" ).dialog({
+  overlayTheme: "c"
+});
   $("#lnkDialog").click();
+  
   console.log("textfade final");
 init();
 console.log("dialogo");
