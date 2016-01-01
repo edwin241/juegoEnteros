@@ -7,11 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css"  />
 <link rel="stylesheet" href="fuente/Ravie/stylesheet2.css" />
+
+
 <script src="jquery-2.1.4.min.js"></script>
 <script src="js/mootools-yui-compressed.js">
 </script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <style>
+
  html,body, div[data-role ="page"] {
            /* height: 100%;*/
             width: 100%;
@@ -46,21 +49,61 @@
           border-width: 10px;*/
 		}
 		#dialog {
-   background-color: red;
+   background:#000;
 
    position: absolute;
-   top: 50%;
+   top: 25%;
    margin-top: -50px; /* half the height */
-       
-}​
-		
+       }​
+		#panel-01{
+		 background: #7F8C8D;
+    color: #ECF0F1;
+			}
+.ui-icon-colombia-icono { 
+  background-image : url(images/colombia.png); 
+background-size: 18px 18px;
+  
+}
+a{
+text-decoration:none;
+}
+			
 </style>
 
 </head>
 
 <body>
 <div data-role="page" data-theme="a">
+<div data-role="panel" id="panel-01" data-theme="b"> 
+    <ul data-role="listview" data-theme="d">
+    <li data-icon="delete"><a href="#" data-rel="close">Cerrar</a></li>
+     <li data-role="list-divider">Menu</li> 
+    <li data-role="list-divider">Otras App</li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.MathWorm.juegocolombiatierraquerida">
+        <img src="images/colombiatq.png">
+        <h2>Colombia TQ</h2>
+        <p>Juego de Geograf&#205;a</p>
+        </a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.herramientaseducativas.edwin.escanerdecerebro"><img src="images/escaner.png">
+        <h2>Escaner</h2>
+        <p>Escanea tu cerebro</p>
+        </a></li>        
+       
+    <li data-icon="home"><a href="#" >Creditos</a></li> 
+     <div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
+          <h3>Contactanos</h3>
+          <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-theme="b" data-content-theme="d">
+                         <h4><a href="https://www.facebook.com/edwin.herrera.315" >Facebook<img src="images/face20.png" style="padding-left:160px"></a></h4>
+               <h4><a href="https://www.instagram.com/edwin_herrera_v/">Instagram<img src="images/instagram20.png" style="padding-left:158px"></a></h4>
+               <h4><a href="https://twitter.com/Edwin_Herrera_V">Twiter<img src="images/twiter20.png" style="padding-left:188px"></a></h4>
+                <h4><a>Pagina Web<img src="images/icono_pagina20.png" style="padding-left:142px"></a></h4>
+             
+         </div>
+           </ul>       
+  </div> 
+
 <div data-role="header" >
+<a href="#panel-01" data-icon="grid"></a>
 <center>
 <img src="images/logo.png" alt="Low resolution logo"class="align-right"/>
 </center>
@@ -84,20 +127,20 @@ font-family:Ravie; font-size:30px">  1  </label>
 <a data-role="button" data-theme="a" id="op1" class="op1" style=" background:#4764e5">Empezar</a>
 <a data-role="button" data-theme="a" id="op2" class="op2" style="background:#f0c208">Empezar</a>
 <a data-role="button" data-theme="a" id="op3" class="op3" style="background:#08f07b">Empezar</a><a data-role="button" data-theme="a" id="op4" class="op4" style="background:#f00808">Empezar</a>
-<a id='lnkDialog' href="#dialog" data-rel="dialog" data-transition="flip" data-overlay-theme="a" data-position-to="window" style="display:none;">dialogo</a>
+<a id='lnkDialog' href="#dialog" data-rel="dialog" data-transition="flip" data-overlay-theme="b" data-position-to="window" style="display:none;">dialogo</a>
 </div>
 </div>
 <div data-role="footer" data-theme="a"><h4>www.edwinherrera.com</h4></div>
 </div>
 
-<div data-role="page" id="main">
+<div data-role="page" id="main" style="background-color:#000">
  
 </div>
-<div data-role="page" id="dialog">
+<div data-role="page" id="dialog" style="background-color:#000">
   <div data-role="header">
     <h1>Juego Terminado</h1>
   </div>    
-  <div data-role="content" id="text">
+  <div data-role="content" id="text" style="background-color:#000">
    <div class="subdiv">
    <p id="parrafo1"></p>
         <canvas id="MyCanvas1" width="600" height="200">
@@ -106,6 +149,11 @@ font-family:Ravie; font-size:30px">  1  </label>
  <p id="parrafo2">Has tenido 3 errores, sigue intentando</p>          
   </div>    
 </div>
+
+
+
+
+
 <script src="js/raf-polyfill.js"></script>
 <script src="js/micodigo.js"></script>
 
