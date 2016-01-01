@@ -379,8 +379,8 @@ context2D.shadowColor = "transparent"
 	aciertos=0;
 	Nivel=1;
 	Generar();
-	texto="Game Over";
-	$("#parrafo1").text("");
+	texto="Fin del Juego";
+	$("#parrafo1").text("Oportunidad fallida");
 	$("#parrafo2").text("Has tenido 3 errores, sigue intentando");
 	 $("#dialog").dialog();
 	 $( "#dialog" ).dialog({
@@ -404,8 +404,8 @@ vidas=3;hasta=120*sc;
 	aciertos=0;
 	nivel=1;
 	$(".nivel").text(""+nivel);
-texto="Superados";	
-$("#parrafo1").text("Todos los retos");
+texto="Felicidades";	
+$("#parrafo1").text("Todos los retos superados");
 $("#parrafo2").text("Dominas perfectamente los n\u00FAmeros enteros");
 
 		}else{
@@ -419,7 +419,7 @@ posX=0;posX2=0;
 
 $(".nivel").text(""+nivel);
 texto="Nivel"+nivel;	
-$("#parrafo1").text("Pasas al Nivel 2");
+$("#parrafo1").text("Pasas al Nivel "+nivel);
 $("#parrafo2").text("\u00BFPodr\u00E1s con l\u00E9?");
 
 	}
@@ -478,7 +478,7 @@ var canvas = document.getElementById('stage');
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120*sc), 50);
+				ctx.moveTo(10+(i*120*sc), 30);
 				ctx.lineTo(10+(i*120*sc), 10);
 				ctx.stroke(); 
 				ctx.fillStyle="black";
@@ -563,7 +563,7 @@ posX=posX-120*sc;
           function Textfadeup() {
             rgbstep++;
             ctx.clearRect(0, 0, can.width, can.height);
-			ctx.font="bold 60px verdana";
+			ctx.font="bold 55px verdana";
             ctx.fillStyle = "rgb(" + rgbstep + "," + 0 + "," + 0 + ")"
             ctx.fillText(texto, 160, 100);
             if (rgbstep < 255)
@@ -576,7 +576,7 @@ posX=posX-120*sc;
         function Textfadedown() {
 rgbstep=rgbstep-1;
             ctx.clearRect(0, 0, can.width, can.height);
-            ctx.font="bold 60px verdana";
+            ctx.font="bold 55px verdana";
            ctx.fillStyle = "rgb(" + rgbstep + "," + 0 + "," + 0 + ")"
             ctx.fillText(texto, 160, 100);
             if (rgbstep > 80)
