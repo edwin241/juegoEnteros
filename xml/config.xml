@@ -77,4 +77,5 @@
     <allow-intent href="itms-apps:*"/>
   </platform>
   <icon src="res/icon/android/mdpi.png" />
+  <preference name="orientation" value="portrait" />
 </widget>
