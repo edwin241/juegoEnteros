@@ -76,5 +76,5 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
-  <icon src="res/icon/android/icono100.png" />
+  <icon src="res/icon/android/mdpi.png" />
 </widget>
