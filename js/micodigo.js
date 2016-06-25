@@ -3,8 +3,7 @@ var texto;
 var nivel=1;
 var vidas=3;
 var aciertos=0; 
-var sc=0.5; //escala canvas
-var scl=1; // escalar letra
+var tipo=0;
 	// Get the buttons.
 	
 	// A variable to store the requestID.
@@ -13,6 +12,16 @@ Generar();
 
 var n1,n2,n3,sig1,sig2,sig3,boton;var elemento;
 function Generar(){
+if(nivel==4){
+n1 = Math.round(Math.random()*20);
+ n2 = Math.round(Math.random()*20);
+  n3 = Math.round(Math.random()*20);
+var s1= Math.round(Math.random()*1);
+var s2= Math.round(Math.random()*1);
+var s3= Math.round(Math.random()*1);
+if(s3==0){sig3="+";} if(s3==1){sig3="-";} 
+}	
+
 if(nivel==3){
 n1 = Math.round(Math.random()*30);
  n2 = Math.round(Math.random()*30);
@@ -55,11 +64,19 @@ canvas.shadowColor = "rgba(0, 0, 0, 1)"
 if(nivel==1||nivel==2){
 if(sig1=="+"){canvas.fillText(""+n1+sig2+n2,300,150);}else{	
 canvas.fillText(""+sig1+n1+sig2+n2,300,150);}
-}else{
+}if(nivel==3){
 canvas.font="bold 80px Ravie";	
 	if(sig1=="+"){canvas.fillText(""+n1+sig2+n2+sig3+n3,300,150);}else{	
 canvas.fillText(""+sig1+n1+sig2+n2+sig3+n3,300,150);}
 	}
+if(nivel==4){
+canvas.font="bold 100px Ravie";	
+tipo = Math.round(Math.random()*2);
+	if(tipo==0){canvas.fillText(""+sig1+n1+sig2+"("+sig3+n2+")",300,150);}
+	if(tipo==1){canvas.fillText("-("+sig1+n1+")"+sig2+n2,300,150);	}
+if(tipo==2){canvas.fillText("-("+sig1+n1+")"+sig2+"("+sig3+n2+")",300,150);}
+
+	}	
 ponerOpciones();
 	
 		}
@@ -95,8 +112,24 @@ var res,o1,o2,o3,o4,ale;
 function ponerOpciones(){
 ale = Math.round(Math.random()*3);	
 if(nivel==1||nivel==2){
-res=parseInt(sig1+n1)+parseInt(sig2+n2);}else{res=parseInt(sig1+n1)+parseInt(sig2+n2)+parseInt(sig3+n3);}
+res=parseInt(sig1+n1)+parseInt(sig2+n2);}
+if(nivel==3){res=parseInt(sig1+n1)+parseInt(sig2+n2)+parseInt(sig3+n3);console.log("resp="+res);}
 //console.log(""+res);
+if(nivel==4){
+if(tipo==0){
+res=parseInt(sig1+n1)+(parseInt(sig2+1))*(parseInt(sig3+n2));
+console.log(parseInt(sig1+n1));
+console.log(parseInt(sig2+1));
+console.log((parseInt(sig2+1))*(parseInt(sig3+n2)));
+console.log(parseInt(sig1+n1)+(parseInt(sig2+1))*(parseInt(sig3+n2)));
+}
+
+if(tipo==1){
+res=(-1)*parseInt(sig1+n1)+(parseInt(sig2+n2));}
+if(tipo==2){
+res=(-1)*parseInt(sig1+n1)+(parseInt(sig2+1))*(parseInt(sig3+n2));}		
+	o1=res; o2=res-1; o3=res+1; o4=-res;
+		}
 if(nivel==3){
 if(sig2=="+"){		
 o1=res+1;o2=res;o3=-res;o4=-(res+1);
@@ -187,7 +220,7 @@ if(p==res){
 	 */
 	function Particle ()
 	{
-		this.scale = 1.3;
+		this.scale = 1.0;
 		this.x = 0;
 		this.y = 0;
 		this.radius = 20;
@@ -343,9 +376,9 @@ animar();
 		var frameDelay = 1000.0/frameRate;
 		
 function animar(){
-	var x=260*sc;
-			var y=200*sc;
-			var d=160*sc;
+	var x=130;
+			var y=100;
+			var d=80;
 	
 
 context2D.shadowColor = "transparent"
@@ -372,45 +405,39 @@ context2D.shadowColor = "transparent"
 			
 	comprobar();
 	if(vidas==0){
-	vidas=3;hasta=-120*sc;
+	vidas=3;hasta=-60;
 	posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	animationWin();
 	aciertos=0;
 	Nivel=1;
 	Generar();
-	texto="Fin del Juego";
-	$("#parrafo1").text("Oportunidad fallida");
+	texto="Game Over";
+	$("#parrafo1").text("");
 	$("#parrafo2").text("Has tenido 3 errores, sigue intentando");
 	 $("#dialog").dialog();
-	 $( "#dialog" ).dialog({
-  overlayTheme: "c"
-});
   $("#lnkDialog").click();
-  
-  console.log("textfade final");
 init();
-console.log("dialogo");
 	}
 	else{
 
 if(aciertos==10){
 nivel=nivel+1;
-	if(nivel==4){
-vidas=3;hasta=120*sc;
+	if(nivel==5){
+vidas=3;hasta=60;
 	posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	animationLost();
 	aciertos=0;
 	nivel=1;
 	$(".nivel").text(""+nivel);
-texto="Felicidades";	
-$("#parrafo1").text("Todos los retos superados");
+texto="Superados";	
+$("#parrafo1").text("Todos los retos");
 $("#parrafo2").text("Dominas perfectamente los n\u00FAmeros enteros");
-
+console.log("sale del of");	
 		}else{
-	
-vidas=3;hasta=120*sc;
+	console.log("aciertos = 10");
+vidas=3;hasta=60;
 posX=0;posX2=0;
 	$(".vidas").text(""+3);
 	
@@ -419,13 +446,13 @@ posX=0;posX2=0;
 
 $(".nivel").text(""+nivel);
 texto="Nivel"+nivel;	
-$("#parrafo1").text("Pasas al Nivel "+nivel);
+$("#parrafo1").text("Pasas al Nivel 2");
 $("#parrafo2").text("\u00BFPodr\u00E1s con l\u00E9?");
 
 	}
 $("#dialog").dialog();
   $("#lnkDialog").click();
-  
+  console.log("antes de init");
  init(); 	
 	}
 Generar();	
@@ -442,11 +469,11 @@ var canvas = document.getElementById('stage');
  ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120*sc), 30);
-				ctx.lineTo(10+(i*120*sc), 10);
+				ctx.moveTo(10+(i*60), 30);
+				ctx.lineTo(10+(i*60), 10);
 				ctx.stroke(); 
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
+				ctx.fillText(""+i-5,10+(i*60)-12, 55);
 }
 
 	// Set the fill style for the drawing context.
@@ -473,21 +500,21 @@ var canvas = document.getElementById('stage');
 		// Otherwise stop the animation.
 		if (posX <= hasta) {
 		//	console.log("posx="+posX);
-			ctx.clearRect(0, 0,1400*sc,250*sc);
+			ctx.clearRect(0, 0,640,100);
 	for(var i=0;i<10;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120*sc), 30);
-				ctx.lineTo(10+(i*120*sc), 10);
+				ctx.moveTo(10+(i*60), 30);
+				ctx.lineTo(10+(i*60), 10);
 				ctx.stroke(); 
 				ctx.fillStyle="black";
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
+				ctx.fillText(""+i-5,10+(i*60)-12, 55);
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0,0,posX+10,250*sc);
+			ctx.fillRect(0,0,posX+10,100);
 			
 			posX += pixelsPerFrame;
 		} else {
@@ -501,21 +528,21 @@ function animate2() {
 		// If the box has not reached the end draw on the canvas.
 		// Otherwise stop the animation.
 		if (posX2 >= hasta) {
-			ctx.clearRect(0, 0,1400*sc, 250*sc);
+			ctx.clearRect(0, 0,640, 100);
 	for(var i=0;i<11;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
 				ctx.beginPath();
-				ctx.moveTo(10+(i*120*sc), 30);
-				ctx.lineTo(10+(i*120*sc), 10);
+				ctx.moveTo(10+(i*60), 30);
+				ctx.lineTo(10+(i*60), 10);
 				ctx.stroke(); 
 				ctx.fillStyle="black";
 				ctx.font="bold 20px verdana";
-				ctx.fillText(""+i-5,10+(i*120*sc)-12, 55);
+				ctx.fillText(""+i-5,10+(i*60)-12, 55);
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0, 0, posX2+10, 250*sc);
+			ctx.fillRect(0, 0, posX2+10, 100);
 			posX2 = posX2-1;
 			
 		} else {
@@ -525,8 +552,8 @@ ctx.globalAlpha=0.6;
 
 	// Event listener for the start button.
 	function animationWin() {
-	
-hasta=hasta+120*sc;
+	console.log("he ganado");	
+hasta=hasta+60;
 aciertos=aciertos+1;
 		// Start the animation.
 		requestID = requestAnimationFrame(animates);
@@ -536,10 +563,10 @@ aciertos=aciertos+1;
 
 	// Event listener for the stop button.
 	 function animationLost() {
-		
+		console.log("he perdido");	
 	posX2=hasta;	
-hasta=hasta-120*sc;
-posX=posX-120*sc;
+hasta=hasta-60;
+posX=posX-60;
 		// Start the animation.
 		requestID2 = requestAnimationFrame(animate2);
 	}
@@ -557,13 +584,13 @@ posX=posX-120*sc;
             ctx.font = "40pt Helvetica";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-			
+			console.log("init final");
                      Textfadeup();        }
  
           function Textfadeup() {
             rgbstep++;
             ctx.clearRect(0, 0, can.width, can.height);
-			ctx.font="bold 55px verdana";
+			ctx.font="bold 60px verdana";
             ctx.fillStyle = "rgb(" + rgbstep + "," + 0 + "," + 0 + ")"
             ctx.fillText(texto, 160, 100);
             if (rgbstep < 255)
@@ -571,12 +598,12 @@ posX=posX-120*sc;
             if (rgbstep == 255) {
                 Textfadedown();
             }
-			
+			console.log("textfade final");
         }
         function Textfadedown() {
 rgbstep=rgbstep-1;
             ctx.clearRect(0, 0, can.width, can.height);
-            ctx.font="bold 55px verdana";
+            ctx.font="bold 60px verdana";
            ctx.fillStyle = "rgb(" + rgbstep + "," + 0 + "," + 0 + ")"
             ctx.fillText(texto, 160, 100);
             if (rgbstep > 80)
