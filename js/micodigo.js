@@ -500,7 +500,7 @@ var canvas = document.getElementById('stage');
 		// Otherwise stop the animation.
 		if (posX <= hasta) {
 		//	console.log("posx="+posX);
-			ctx.clearRect(0, 0,640,100);
+			ctx.clearRect(0, 0,640,130);
 	for(var i=0;i<10;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
@@ -514,7 +514,7 @@ var canvas = document.getElementById('stage');
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0,0,posX+10,100);
+			ctx.fillRect(0,0,posX+10,130);
 			
 			posX += pixelsPerFrame;
 		} else {
@@ -528,7 +528,7 @@ function animate2() {
 		// If the box has not reached the end draw on the canvas.
 		// Otherwise stop the animation.
 		if (posX2 >= hasta) {
-			ctx.clearRect(0, 0,640, 100);
+			ctx.clearRect(0, 0,640, 130);
 	for(var i=0;i<11;i++){
 		 ctx.lineWidth = 3;
 				ctx.strokeStyle = "red";
@@ -542,7 +542,7 @@ function animate2() {
 }		
 ctx.fillStyle="CornflowerBlue";
 ctx.globalAlpha=0.6;
-			ctx.fillRect(0, 0, posX2+10, 100);
+			ctx.fillRect(0, 0, posX2+10, 130);
 			posX2 = posX2-1;
 			
 		} else {
